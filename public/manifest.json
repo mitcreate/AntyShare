@@ -1,0 +1,18 @@
+{
+  "name": "AntyShare — Offline Hotspot File Transfer",
+  "short_name": "AntyShare",
+  "description": "100% Offline Hotspot P2P File Transfer (0 MB Internet Data)",
+  "start_url": "/AntyShare-Offline.html?source=pwa",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#07090e",
+  "theme_color": "#00f0ff",
+  "icons": [
+    {
+      "src": "/icon-512.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

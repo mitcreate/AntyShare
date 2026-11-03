@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — AntyShare Ultra-Fast P2P & Hotspot Transfer</title>
+  <meta name="description" content="Learn about AntyShare: The next-generation zero-storage peer-to-peer file transfer engine achieving up to 90 MB/s offline speeds.">
+  <link rel="stylesheet" href="/style.css?v=1.2.2">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00f0ff">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Minimal Header for Legal Pages -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand" style="text-decoration: none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <span class="brand-name">AntyShare</span>
+          <span class="brand-tag">Ultra-Speed File Engine</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Toggle theme" title="Toggle Dark/Light Mode">
+          <span class="theme-icon-sun">☀️</span>
+          <span class="theme-icon-moon">🌙</span>
+        </button>
+        <a href="/" class="legal-back-btn">← Back to Transfer</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-main">
+    <div class="legal-header">
+      <div class="legal-badge">🚀 Platform Architecture</div>
+      <h1 class="legal-title">About AntyShare</h1>
+      <p class="legal-subtitle">We engineered AntyShare to solve a fundamental modern dilemma: Why wait hours uploading gigabytes to the cloud when your devices are right next to each other?</p>
+      <div class="legal-updated">Engine Version: 1.2.2 • Zero-Storage Hardened Edition</div>
+    </div>
+
+    <div class="legal-warning-callout">
+      <h4>⚠️ Safety Reminder: Platform Scope</h4>
+      <p>AntyShare is designed exclusively for fast, casual sharing of non-sensitive media, video edits, photos, 4K clips, game assets, and project files. <strong>Never use AntyShare for transferring banking passwords, financial credentials, or confidential personal identification documents.</strong></p>
+    </div>
+
+    <article class="legal-card">
+      <h2>1. The Problem with Cloud File Sharing</h2>
+      <p>When you use traditional file sharing services (Google Drive, WeTransfer, Telegram, or cloud lockers), moving a 10 GB 4K video from your phone to your laptop follows an inefficient route:</p>
+      <ol>
+        <li>Your phone must <strong>upload</strong> all 10 GB to a remote data center thousands of miles away, consuming your cellular data.</li>
+        <li>You must wait until the entire upload finishes before generating a link.</li>
+        <li>Your laptop must then <strong>download</strong> all 10 GB from that data center.</li>
+        <li>Both devices waste battery, burn 20 GB of total bandwidth, and store a permanent copy of your file on a third-party server.</li>
+      </ol>
+
+      <div class="legal-highlight-box">
+        <strong>The AntyShare Difference:</strong> By streaming directly over local Wi-Fi or peer-to-peer WebRTC connections, AntyShare transfers data at the maximum physical speed of your network hardware—up to <strong>60–90 MB/s</strong>—with <strong>0 MB cloud storage consumed</strong>.
+      </div>
+
+      <h2>2. Three Specialized Transfer Engines</h2>
+      <p>AntyShare provides three specialized modes tailored to your connectivity environment:</p>
+
+      <h3>📡 Mode 1: Quick Wi-Fi Radar (Same-Router Isolation & Masked IP)</h3>
+      <p>Automatically discovers devices connected to the same Wi-Fi router using ephemeral local discovery beacons. You see active devices on a dynamic visual radar with <b>masked IP privacy</b> (your real IP is never exposed). Before any data begins flowing, the recipient receives an interactive prompt to Accept or Decline with automated executable/malware extension scanning.</p>
+
+      <h3>⚡ Mode 2: 100% Offline Hotspot (0 MB Internet Data)</h3>
+      <p>Engineered for locations with zero internet connectivity (flights, field shoots, remote areas, or mobile data saving). Use our standalone <b>AntyShare Android APK</b> for high-speed Wi-Fi Direct socket transfers (50–80 MB/s), or connect your laptop to the phone's Hotspot or local Wi-Fi and open the live Web Portal (e.g. <b>http://&lt;phone-ip&gt;:8080</b> shown dynamically on your phone screen) for instant drag-and-drop file transfers with zero software installed on your PC!</p>
+
+      <h3>🌐 Mode 3: Global P2P Tunnel (1-to-1 Room Lock & DTLS Encryption)</h3>
+      <p>Share files across continents without intermediary file lockers. Using WebRTC DataChannels secured with DTLS-SRTP military-grade encryption (AES-128/256-GCM), both browsers establish a direct mesh link. Each room is locked to strictly 2 peers with anti-brute-force rate limiting. Files stream chunk-by-chunk in real-time straight to the receiver's disk buffer with <b>zero bytes written to our servers</b>.</p>
+
+      <h2>3. Core Technology Stack & Security Features</h2>
+      <ul>
+        <li><strong>Frontend & Aesthetics:</strong> High-performance Vanilla JavaScript, CSS custom properties with Dark & Light theme engines, Responsive Mobile Layout with Safe-Area insets.</li>
+        <li><strong>Signaling Layer:</strong> Lightweight Node.js event-driven WebSocket signaling server with 1-to-1 room capacity capping and anti-brute-force rate limiters.</li>
+        <li><strong>Transfer Protocol:</strong> WebRTC DataChannel (SCTP over DTLS/UDP with AES-GCM cipher suite) for global peers, high-throughput chunked HTTP/2 streams for local LAN.</li>
+        <li><strong>Malware Defense:</strong> Real-time client-side warning banner alerting users whenever executable scripts (.exe, .bat, .cmd, .msi, .apk) are received.</li>
+        <li><strong>Camera Privacy:</strong> QR scanner camera stream automatically severs and powers down hardware video tracks immediately upon code acquisition or modal closure.</li>
+        <li><strong>Client App:</strong> Progressive Web App (Service Worker cache + Web App Manifest) running natively across Windows, Mac, Linux, Android, and iOS without third-party installers.</li>
+      </ul>
+
+      <h2>4. Zero-Data Retention Guarantee</h2>
+      <p>Privacy is not an add-on feature at AntyShare; it is an architectural foundation. Because our server does not possess a persistent file storage disk pool, it is mathematically impossible for us to inspect, leak, or sell your files. The moment your transfer concludes, your data exists only on your device and your recipient's device.</p>
+
+      <h2>5. The Team & Support</h2>
+      <p>AntyShare is continuously maintained and improved by an enthusiastic team of network engineers and web developers passionate about open, decentralized peer-to-peer web standards. Have feedback, questions, or bug reports? Visit our <a href="/contact.html" style="color: var(--cyan-primary);">Contact Page</a> or email us at <a href="mailto:support@antyshare.in" style="color: var(--cyan-primary);">support@antyshare.in</a>.</p>
+    </article>
+  </main>
+
+  <!-- Modern SaaS Footer -->
+  <footer class="saas-footer">
+    <div class="saas-footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="/" class="footer-brand">
+            <span class="footer-brand-logo">⚡</span>
+            <span class="footer-brand-name">AntyShare</span>
+          </a>
+          <p class="footer-desc">Ultra-fast peer-to-peer & offline hotspot file transfer engine. Zero server storage, direct memory streaming, 1-to-1 room lock, end-to-end encrypted.</p>
+          <div class="footer-trust-chips">
+            <span class="trust-chip"><span>✓</span> 0 MB Server Storage</span>
+            <span class="trust-chip"><span>✓</span> End-to-End Encrypted</span>
+            <span class="trust-chip"><span>✓</span> IP Masked Privacy</span>
+            <span class="trust-chip"><span>✓</span> 1-to-1 Room Lock</span>
+            <span class="trust-chip"><span>✓</span> 100% Ad & Tracker Free</span>
+            <span class="trust-chip"><span>✓</span> No Account Needed</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Transfer Modes</h4>
+          <ul class="footer-links-list">
+            <li><a href="/#mode-wifi">Quick Wi-Fi Radar</a></li>
+            <li><a href="/#mode-offline">Offline Hotspot (0 MB)</a></li>
+            <li><a href="/#mode-global">Global P2P Tunnel</a></li>
+            <li><a href="/antyshare.apk" download="AntyShare.apk">📱 Download Android APK</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Legal & Trust</h4>
+          <ul class="footer-links-list">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+            <li><a href="/disclaimer.html">Disclaimer</a></li>
+            <li><a href="/about.html">About Technology <span class="badge-mini">Active</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Support & Contact</h4>
+          <ul class="footer-links-list">
+            <li><a href="/contact.html">Contact Us</a></li>
+            <li><a href="/contact.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="mailto:support@antyshare.in">support@antyshare.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 AntyShare.in — Zero-Storage Peer-to-Peer Transfer Engine. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/disclaimer.html">Disclaimer</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btnTheme = document.getElementById('btn-theme-toggle');
+    const savedTheme = localStorage.getItem('antyshare_theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    if (savedTheme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+    if (btnTheme) {
+      btnTheme.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        if (next === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        else document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('antyshare_theme', next);
+      });
+    }
+  </script>
+  <!-- Mobile Bottom Floating Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Mobile navigation">
+    <a href="/?mode=wifi" class="mobile-nav-item" id="mob-nav-wifi">
+      <span class="mobile-nav-icon">📱</span>
+      <span>Radar</span>
+    </a>
+    <a href="/?mode=offline" class="mobile-nav-item" id="mob-nav-offline">
+      <span class="mobile-nav-icon">⚡</span>
+      <span>Hotspot</span>
+    </a>
+    <a href="/?mode=global" class="mobile-nav-item" id="mob-nav-global">
+      <span class="mobile-nav-icon">🌐</span>
+      <span>Global</span>
+    </a>
+    <a href="/about.html" class="mobile-nav-item active" id="mob-nav-legal">
+      <span class="mobile-nav-icon">🛡️</span>
+      <span>Legal</span>
+    </a>
+  </nav>
+</body>
+</html>

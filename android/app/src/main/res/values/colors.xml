@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_main">#0A0D14</color>
+    <color name="card_bg">#121722</color>
+    <color name="card_border">#1F293D</color>
+    <color name="neon_teal">#00F0FF</color>
+    <color name="neon_teal_dim">#1A00F0FF</color>
+    <color name="emerald_green">#10B981</color>
+    <color name="emerald_green_dim">#1A10B981</color>
+    <color name="amber_warning">#F59E0B</color>
+    <color name="text_white">#F8FAFC</color>
+    <color name="text_muted">#94A3B8</color>
+    <color name="divider_color">#1E293B</color>
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AntyShare</string>
+    <string name="app_tagline">Ultra-Speed Heavy File Transfer</string>
+    <string name="title_pc_connect">Connect to PC / Laptop</string>
+    <string name="title_send">Send to Phone</string>
+    <string name="title_receive">Receive from Phone</string>
+    <string name="mode_pc_desc">Zero software on PC • Open browser directly</string>
+    <string name="mode_send_desc">1-Tap Optical QR Beam • 50-80 MB/s speed</string>
+    <string name="mode_receive_desc">Scan Sender QR code • 0 MB mobile data</string>
+    <string name="btn_stop_server">Stop Web Server</string>
+    <string name="btn_copy_url">Copy Web URL</string>
+    <string name="status_server_running">🟢 Web Server Running</string>
+    <string name="status_server_stopped">⚪ Web Server Stopped</string>
+</resources>

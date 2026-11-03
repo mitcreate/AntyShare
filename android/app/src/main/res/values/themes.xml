@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base Application Theme -->
+    <style name="Theme.AntyShare" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/neon_teal</item>
+        <item name="colorPrimaryVariant">#00B8D4</item>
+        <item name="colorOnPrimary">#0A0D14</item>
+        <item name="colorSecondary">@color/emerald_green</item>
+        <item name="colorSecondaryVariant">#059669</item>
+        <item name="colorOnSecondary">#0A0D14</item>
+        <item name="android:colorBackground">@color/bg_main</item>
+        <item name="colorSurface">@color/card_bg</item>
+        <item name="colorOnSurface">@color/text_white</item>
+        <item name="android:statusBarColor">@color/bg_main</item>
+        <item name="android:navigationBarColor">@color/bg_main</item>
+    </style>
+
+    <style name="Theme.AntyShare.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/bg_main</item>
+        <item name="android:navigationBarColor">@color/bg_main</item>
+    </style>
+
+    <style name="DarkAlertDialogTheme" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="colorPrimary">@color/neon_teal</item>
+        <item name="colorSecondary">@color/emerald_green</item>
+        <item name="colorSurface">@color/card_bg</item>
+        <item name="android:textColorPrimary">#F8FAFC</item>
+        <item name="android:textColorSecondary">#94A3B8</item>
+        <item name="android:textColor">#F8FAFC</item>
+    </style>
+</resources>

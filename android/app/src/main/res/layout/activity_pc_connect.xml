@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Top Bar with Back Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageButton
+                android:id="@+id/btn_back_pc"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/card_bg_border"
+                android:src="@android:drawable/ic_menu_revert"
+                android:tint="@color/text_white"
+                android:contentDescription="Back"
+                android:layout_marginEnd="12dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="💻 Connect to PC / Laptop"
+                    android:textColor="@color/text_white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zero Software Needed on Laptop"
+                    android:textColor="@color/neon_teal"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Live Server Status Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_bg_border"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:id="@+id/tv_pc_server_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🟢"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/tv_pc_server_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Web Server Active"
+                    android:textColor="@color/emerald_green"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_toggle_pc_server"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="36dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_outline_rounded"
+                    android:text="Stop Server"
+                    android:textAllCaps="false"
+                    android:textColor="@color/neon_teal"
+                    android:textSize="12sp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Open this URL in any browser on your laptop:"
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Highlighted URL Box -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#162032"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="12dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tv_pc_url"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="http://192.168.43.1:8080"
+                    android:textColor="@color/neon_teal"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_copy_pc_url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="36dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_teal_rounded"
+                    android:text="📋 Copy"
+                    android:textAllCaps="false"
+                    android:textColor="@color/bg_main"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Share Files from Phone Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_highlight_border"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📁 Share Files with Laptop"
+                android:textColor="@color/text_white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tv_pc_shared_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select photos, 4K videos, or files from your phone so your laptop can download them directly."
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/btn_pc_pick_files"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="16dp"
+                android:background="@drawable/btn_teal_rounded"
+                android:text="📁 Choose Files to Share"
+                android:textAllCaps="false"
+                android:textColor="@color/bg_main"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="10dp" />
+
+            <Button
+                android:id="@+id/btn_view_received_files"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="44dp"
+                android:gravity="center"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="16dp"
+                android:background="@drawable/btn_outline_rounded"
+                android:text="📥 View Received Laptop Files"
+                android:textAllCaps="false"
+                android:textColor="@color/neon_teal"
+                android:textStyle="bold"
+                android:textSize="13.5sp" />
+        </LinearLayout>
+
+        <!-- QR Code Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_bg_border"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="20dp"
+            android:layout_marginBottom="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scan with Camera / Laptop to Open URL"
+                android:textColor="@color/text_muted"
+                android:textSize="12sp"
+                android:layout_marginBottom="14dp" />
+
+            <ImageView
+                android:id="@+id/iv_pc_qr_code"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:background="@color/text_white"
+                android:padding="8dp"
+                android:contentDescription="PC Web Portal QR Code" />
+        </LinearLayout>
+
+        <!-- 3 Step Instruction Guide -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_bg_border"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📌 How to connect?"
+                android:textColor="@color/text_white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Connect your Laptop Wi-Fi to this phone's Hotspot or the same Wi-Fi network."
+                android:textColor="@color/text_muted"
+                android:textSize="12.5sp"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. Open the URL shown above in Chrome, Edge, or Safari on your laptop."
+                android:textColor="@color/text_muted"
+                android:textSize="12.5sp"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3. Done! Drag &amp; drop files from laptop to phone, or download phone files with 1 click!"
+                android:textColor="@color/text_muted"
+                android:textSize="12.5sp" />
+        </LinearLayout>
+
+        <!-- Live Activity Log -->
+        <TextView
+            android:id="@+id/tv_pc_transfer_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Waiting for laptop connection..."
+            android:textColor="@color/text_muted"
+            android:textSize="12sp"
+            android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+</ScrollView>

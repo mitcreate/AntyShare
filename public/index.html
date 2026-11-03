@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AntyShare — Ultra-Fast Heavy File Transfer (Offline Hotspot & P2P)</title>
+  <meta name="description" content="100% Zero-Storage P2P & Offline Hotspot file transfer engine. Stream 1GB-50GB files directly memory-to-memory at 60-90 MB/s, DTLS-SRTP end-to-end encrypted, zero server storage, zero ads, zero trackers.">
+  <link rel="stylesheet" href="/style.css?v=2.5.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00f0ff">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation / Top Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <span class="brand-name">AntyShare</span>
+          <span class="brand-tag">Ultra-Speed File Engine</span>
+        </div>
+      </div>
+
+      <!-- Mode Switcher Tabs -->
+      <nav class="mode-switcher" id="mode-switcher" role="tablist">
+        <button class="mode-tab active" data-mode="mode-wifi" role="tab" aria-selected="true" id="tab-btn-wifi">
+          <span class="mode-icon">📡</span>
+          <span class="mode-title">Quick Wi-Fi</span>
+          <span class="mode-pill-badge">Radar</span>
+        </button>
+        <button class="mode-tab" data-mode="mode-offline" role="tab" aria-selected="false" id="tab-btn-offline">
+          <span class="mode-icon">📴</span>
+          <span class="mode-title">Offline Hotspot</span>
+          <span class="mode-pill-badge">0 MB Data</span>
+        </button>
+        <button class="mode-tab" data-mode="mode-global" role="tab" aria-selected="false" id="tab-btn-global">
+          <span class="mode-icon">🌐</span>
+          <span class="mode-title">Global P2P</span>
+          <span class="mode-pill-badge">Anywhere</span>
+        </button>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Toggle theme" title="Toggle Dark/Light Mode">
+          <span class="theme-icon-sun">☀️</span>
+          <span class="theme-icon-moon">🌙</span>
+        </button>
+        <div class="status-indicator online" id="server-status">
+          <span class="status-dot"></span>
+          <span class="status-label">Ready</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Security & Sensitive Data Advisory Notice -->
+  <aside class="security-advisory-banner" id="security-advisory-banner" role="alert">
+    <div class="security-banner-content">
+      <span class="security-banner-icon">🛡️</span>
+      <div class="security-banner-text">
+        <strong>Notice: Strictly for Non-Sensitive Media & Files:</strong> AntyShare is engineered exclusively for everyday media, photos, videos, and project files. <u>Never share banking credentials, passwords, confidential identity documents, or payment cards.</u>
+      </div>
+      <button class="security-banner-dismiss" id="btn-dismiss-security-banner" aria-label="Dismiss Advisory" title="Acknowledge">✕</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <!-- ============================================================ -->
+    <!-- MODE 3: QUICK WI-FI (SAME WI-FI RADAR)                       -->
+    <!-- ============================================================ -->
+    <section class="mode-section active" id="mode-wifi">
+      <div class="mode-hero-badge mode-hero-green">
+        <span class="badge-dot"></span>
+        <span>MODE 1 ACTIVE: QUICK WI-FI RADAR • SAME-ROUTER ISOLATION • MASKED IP PRIVACY • 100% P2P</span>
+      </div>
+
+      <!-- Device Identity & Security Status Bar -->
+      <div class="device-identity-bar glass-card">
+        <div class="identity-left">
+          <span class="identity-badge"><span class="lock-icon">🔒</span> Same Wi-Fi Protected</span>
+          <span class="identity-ip-label" id="radar-network-ip">Network: Scanning...</span>
+        </div>
+        <div class="identity-right">
+          <label for="input-device-name">My Radar Name:</label>
+          <div class="identity-input-wrap">
+            <input type="text" id="input-device-name" maxlength="25" placeholder="e.g. My Phone" />
+            <button class="btn-save-name" id="btn-save-device-name">Update</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="radar-arena-card card glass-card">
+        <div class="radar-wrapper">
+          <div class="radar-circle circle-1"></div>
+          <div class="radar-circle circle-2"></div>
+          <div class="radar-circle circle-3"></div>
+          <div class="radar-sweep"></div>
+          <div class="radar-center-node" title="Your Device">
+            <span class="node-icon" id="my-device-icon">💻</span>
+            <span class="node-name" id="my-device-label">This Laptop</span>
+          </div>
+          <!-- Peer nodes injected via JS -->
+          <div class="radar-peers" id="radar-peers"></div>
+        </div>
+
+        <div class="radar-instructions-panel">
+          <div class="instructions-header">
+            <h3>📡 Nearby Devices on Same Wi-Fi</h3>
+            <div class="radar-security-tags" style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <span class="security-chip">🔒 Masked IP Privacy</span>
+              <span class="security-chip" style="color: #00f0ff; background: rgba(0, 240, 255, 0.12); border-color: rgba(0, 240, 255, 0.28);">🛡️ Anti-Malware Scan</span>
+              <span class="security-chip" style="color: #c084fc; background: rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.28);">⚡ 0 MB Disk Storage</span>
+            </div>
+          </div>
+          <p>Tap any device on the radar to beam a file. The recipient will receive an <b>Accept / Decline</b> security prompt with automated executable analysis before any file is sent.</p>
+          <div class="discovered-peers-list" id="discovered-peers-list">
+            <span class="scanning-text">Scanning for nearby devices on same Wi-Fi...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode 3 Active Transfer HUD -->
+      <div class="transfer-hud glass-card" id="radar-beam-hud" style="display: none; margin-top: 20px;">
+        <div class="hud-top">
+          <span class="hud-filename" id="radar-hud-filename">beaming_file.zip</span>
+          <span class="hud-speed green-text" id="radar-hud-speed">Streaming...</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill green-fill" id="radar-hud-progress" style="width: 0%;"></div>
+        </div>
+        <div class="hud-bottom">
+          <span class="hud-bytes" id="radar-hud-bytes">0 MB / 0 MB</span>
+          <span class="hud-eta" id="radar-hud-status">Active Wi-Fi Beam</span>
+        </div>
+      </div>
+
+      <!-- Hidden file input for radar beam -->
+      <input type="file" id="radar-file-input" style="display: none;" multiple />
+
+      <!-- ============================================================ -->
+      <!-- ZERO-INTERNET OFFLINE WI-FI PAIRING (NO INTERNET BACKUP)     -->
+      <!-- ============================================================ -->
+      <div class="card glass-card offline-pairing-card">
+        <div class="offline-card-header">
+          <div class="header-left">
+            <div class="offline-badge-pill">
+              <span class="pulse-dot-yellow"></span>
+              <span>NO INTERNET BACKUP</span>
+            </div>
+            <h3 class="offline-title">Offline Wi-Fi Pairing (0% Internet Required)</h3>
+            <p class="offline-subtitle">If your Wi-Fi router has <b>no internet access</b>, pair devices instantly using QR Code & Camera Scanner!</p>
+          </div>
+        </div>
+
+        <div class="offline-dual-grid">
+          <!-- Col 1: Show My Offline QR -->
+          <div class="offline-col show-qr-col">
+            <div class="col-header-badge">📱 Option A: Show My Device QR</div>
+            <div class="offline-qr-box">
+              <img id="mode3-offline-qr-img" src="" alt="Pairing QR Code" style="display: none;" />
+              <div id="mode3-qr-spinner" class="spinner"></div>
+            </div>
+            <p class="qr-instruction">Point the other phone's camera at this QR code to pair immediately over local Wi-Fi.</p>
+            <button class="btn-secondary" id="btn-refresh-offline-qr" style="font-size: 12px; padding: 6px 14px;">🔄 Refresh QR Code</button>
+          </div>
+
+          <!-- Col 2: Scan Peer QR Code -->
+          <div class="offline-col scan-qr-col">
+            <div class="col-header-badge">📷 Option B: Scan Other Device</div>
+            <div class="scanner-hero-icon">📸</div>
+            <p class="scan-instruction">Tap below to open your camera and scan the QR code shown on the other device's screen.</p>
+            <button class="btn-primary btn-scanner-launch" id="btn-open-camera-scanner">
+              <span>📷 Open Camera Scanner</span>
+            </button>
+            <div class="offline-tip">
+              <span>⚡ 100% Works offline over local Wi-Fi • Zero MB internet used</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode 3 Guide -->
+      <div class="mode-resources-grid">
+        <div class="res-card">
+          <div class="res-icon">⚡</div>
+          <h3>Zero Install on Both Devices</h3>
+          <p>Both devices just open the browser. No app download, no account creation, no password.</p>
+        </div>
+        <div class="res-card">
+          <div class="res-icon">🏢</div>
+          <h3>Perfect for Office & Home</h3>
+          <p>Effortlessly beam files to colleagues sitting across the room or transfer phone photos to your desktop instantly.</p>
+        </div>
+      </div>
+    </section>
+
+        <!-- ============================================================ -->
+    <!-- MODE 2: OFFLINE HOTSPOT (ZERO-STORAGE DIRECT LIVE STREAM)     -->
+    <!-- ============================================================ -->
+    <section class="mode-section" id="mode-offline">
+      <div class="mode-hero-badge">
+        <span class="badge-dot"></span>
+        <span>MODE 2 ACTIVE: 100% OFFLINE HOTSPOT • 0 MB INTERNET DATA • 0 MB DISK STORAGE • MEMORY-TO-MEMORY STREAM</span>
+      </div>
+
+      <!-- Dedicated AntyShare Mobile APK Hub -->
+      <div class="apk-hero-card glass-card">
+        <div class="apk-hero-badge">
+          <span class="pulse-dot-green"></span>
+          <span>MODE 2: 100% AIR-GAPPED OFFLINE HOTSPOT • 0 MB INTERNET DATA</span>
+        </div>
+        <h2 class="apk-hero-title">📱 AntyShare Mobile App for Android</h2>
+        <p class="apk-hero-desc">
+          Transfer heavy photos, 4K videos, and large archives between <b>Phone-to-Phone</b> and <b>Phone-to-PC</b> with <b>zero cables, zero software on PC, and 0 MB internet!</b>
+        </p>
+
+        <div class="apk-btn-row">
+          <a href="/antyshare.apk" download="AntyShare.apk" class="btn-apk-download" id="btn-main-download-apk">
+            <span>⬇️ Download AntyShare APK</span>
+            <small>(v1.0.0 • Free & Open Source • Direct Android Install)</small>
+          </a>
+        </div>
+
+        <div class="apk-features-list">
+          <span class="apk-feat-chip">✓ 0 MB Mobile Data Required</span>
+          <span class="apk-feat-chip">✓ 50 to 80 MB/s Transfer Speed</span>
+          <span class="apk-feat-chip">✓ Zero Software Needed on PC</span>
+          <span class="apk-feat-chip">✓ No Ads • No Trackers • 100% Private</span>
+          <span class="apk-feat-chip">✓ Android 8.0 to Android 15 Compatible</span>
+        </div>
+      </div>
+
+      <!-- Clear Visual Workflows Grid -->
+      <div class="apk-workflow-grid">
+        <!-- Workflow 1: Phone to Phone -->
+        <div class="apk-workflow-card">
+          <div class="workflow-header">
+            <div class="workflow-icon">📲</div>
+            <div>
+              <h3 class="workflow-title">1. Phone to Phone (Mobile ⇄ Mobile)</h3>
+              <p class="workflow-subtitle">High-speed Wi-Fi Direct direct transfer</p>
+            </div>
+          </div>
+          <div class="apk-step-list">
+            <div class="apk-step-item">
+              <span class="apk-step-num">1</span>
+              <span>Open the <b>AntyShare App</b> on both Android devices.</span>
+            </div>
+            <div class="apk-step-item">
+              <span class="apk-step-num">2</span>
+              <span>On the Sender phone, tap <b>"Send"</b> and pick files. On the Receiver phone, tap <b>"Receive"</b>.</span>
+            </div>
+            <div class="apk-step-item">
+              <span class="apk-step-num">3</span>
+              <span>Scan the Sender's <b>QR Code</b> using the Receiver phone — devices connect instantly and transfer at <b>50–80 MB/s</b>!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workflow 2: Phone to PC -->
+        <div class="apk-workflow-card">
+          <div class="workflow-header">
+            <div class="workflow-icon">💻</div>
+            <div>
+              <h3 class="workflow-title">2. Phone to PC / Laptop (Zero PC Install!)</h3>
+              <p class="workflow-subtitle">Direct browser portal without installing any PC software</p>
+            </div>
+          </div>
+          <div class="apk-step-list">
+            <div class="apk-step-item">
+              <span class="apk-step-num">1</span>
+              <span>In the Android App, tap <b>"Connect to PC / Laptop"</b>.</span>
+            </div>
+            <div class="apk-step-item">
+              <span class="apk-step-num">2</span>
+              <span>Connect your Laptop Wi-Fi to the phone's Hotspot (or ensure both are on the same Wi-Fi).</span>
+            </div>
+            <div class="apk-step-item">
+              <span class="apk-step-num">3</span>
+              <span>Open any browser on your laptop and enter the <b>exact URL shown on your phone screen</b> (or scan the QR code):</span>
+            </div>
+          </div>
+          <div class="apk-portal-box">
+            <div class="apk-portal-header">
+              <span class="portal-pulse-dot"></span>
+              <span class="portal-header-text">Live URL from your Phone Screen:</span>
+            </div>
+            <form id="portal-form" class="apk-portal-form" onsubmit="event.preventDefault(); if (typeof window.openPhonePortal === 'function') window.openPhonePortal();">
+              <div class="apk-portal-input-group">
+                <span class="apk-portal-prefix">http://</span>
+                <input
+                  type="text"
+                  id="phone-portal-ip"
+                  class="apk-portal-input"
+                  placeholder="e.g. 192.168.43.1:8080"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+              </div>
+              <button type="submit" class="apk-portal-btn" id="btn-open-portal" title="Open Phone Web Portal">
+                <span>Open Portal</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </button>
+            </form>
+            <div class="apk-portal-hint">
+              <span>💡 <b>Note:</b> Every phone/network generates its own private address (e.g. <code>192.168.43.1:8080</code> or <code>192.168.x.x:8080</code>). Enter the live URL shown on your phone screen!</span>
+            </div>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); margin: 10px 0 0 0; line-height: 1.5;">
+            🎉 <b>Done!</b> The phone's Web Portal opens right in your laptop browser. No webcam, scanner, or cables required — download files with 1 click or drag-and-drop to upload back to your phone!
+          </p>
+        </div>
+      </div>
+
+      <!-- PC to PC Guidance Banner -->
+      <div class="pc-to-pc-banner">
+        <span class="banner-icon">🖥️</span>
+        <div class="banner-text">
+          <b>Need to transfer between two Laptops or Computers?</b><br />
+          If transferring between computers on the same network, no app is required. Switch to <a id="link-goto-radar-mode">📡 Mode 1: Quick Wi-Fi Radar</a> for instant browser-to-browser transfer!
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MODE 3: GLOBAL P2P (ANYWHERE IN THE WORLD)                   -->
+    <!-- ============================================================ -->
+    <section class="mode-section" id="mode-global">
+      <div class="mode-hero-badge mode-hero-purple">
+        <span class="badge-dot"></span>
+        <span>MODE 3 ACTIVE: GLOBAL P2P TUNNEL • 1-TO-1 ROOM LOCK • DTLS END-TO-END ENCRYPTED • 0 MB SERVER DISK</span>
+      </div>
+
+      <div class="grid-two-cols">
+        <!-- Send Section -->
+        <div class="card glass-card">
+          <div class="card-header">
+            <div class="card-icon purple-glow">📡</div>
+            <div>
+              <h2 class="card-title">Create a P2P Transfer Room</h2>
+              <p class="card-subtitle">Generate a 6-digit code or link to share with anyone worldwide</p>
+            </div>
+          </div>
+
+          <div class="p2p-create-box">
+            <div class="dropzone p2p-dropzone" id="p2p-dropzone">
+              <input type="file" id="p2p-file-input" multiple>
+              <div class="dropzone-inner">
+                <div class="dropzone-icon">🌐</div>
+                <p class="dropzone-prompt"><b>Drop file(s) to create room</b></p>
+                <p class="dropzone-sub">or click to browse from device</p>
+                <span class="zero-storage-pill">🛡️ Direct Browser-to-Browser • 0 MB Server Storage</span>
+              </div>
+            </div>
+
+            <div class="p2p-code-display" id="p2p-code-display" style="display: none;">
+              <div class="p2p-file-badge" id="p2p-selected-file-info" style="display: none; padding: 6px 12px; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.35); border-radius: var(--radius-sm); font-size: 13px; font-weight: 700; color: #c084fc; margin-bottom: 12px; text-align: center;"></div>
+              <span class="p2p-code-label">Your 6-Digit Transfer Code:</span>
+              <div class="p2p-big-code" id="p2p-generated-code">--- ---</div>
+              <div class="p2p-share-link-box">
+                <input type="text" id="p2p-share-url" readonly value="" />
+                <button class="btn-copy" id="btn-copy-p2p-url">Copy Link</button>
+              </div>
+              <div class="p2p-sender-controls" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; gap: 10px; flex-wrap: wrap;">
+                <p class="p2p-waiting-indicator" id="p2p-waiting-indicator" style="margin: 0; font-size: 13px;">⏳ Waiting for recipient to join...</p>
+                <button type="button" class="btn-secondary" id="btn-p2p-reset" style="padding: 6px 12px; font-size: 12px; background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: var(--radius-sm); cursor: pointer;">🔄 Change Files</button>
+              </div>
+
+              <!-- Post-Transfer Action Bar (Appears when beam completes) -->
+              <div class="p2p-completed-actions" id="p2p-sender-completed-actions" style="display: none; margin-top: 12px; gap: 8px; flex-wrap: wrap;">
+                <button type="button" class="btn-primary" id="btn-p2p-send-more" style="flex: 1; padding: 10px 14px; font-size: 13px;">⚡ Beam Another File</button>
+                <button type="button" class="btn-secondary" id="btn-p2p-new-room" style="padding: 10px 14px; font-size: 13px; background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: var(--radius-md); cursor: pointer;">➕ New Room</button>
+              </div>
+
+              <!-- Sender Live Transfer Telemetry HUD -->
+              <div class="transfer-hud" id="p2p-sender-hud" style="display: none; margin-top: 14px;">
+                <div class="hud-top">
+                  <span class="hud-filename" id="p2p-sender-hud-filename">streaming_file.mp4</span>
+                  <span class="hud-speed purple-text" id="p2p-sender-hud-speed">0.0 MB/s</span>
+                </div>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar-fill purple-fill" id="p2p-sender-hud-progress" style="width: 0%;"></div>
+                </div>
+                <div class="hud-bottom">
+                  <span class="hud-bytes" id="p2p-sender-hud-bytes">0 MB / 0 MB</span>
+                  <span class="hud-eta" id="p2p-sender-hud-eta">Streaming Live Chunks...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Receive Section -->
+        <div class="card glass-card">
+          <div class="card-header">
+            <div class="card-icon cyan-glow">🔑</div>
+            <div>
+              <h2 class="card-title">Join & Receive File</h2>
+              <p class="card-subtitle">Enter the 6-digit code shared with you</p>
+            </div>
+          </div>
+
+          <div class="p2p-join-box">
+            <div class="code-input-group">
+              <input type="text" class="code-input" id="input-p2p-code" placeholder="ENTER 6-DIGIT CODE" maxlength="7" autocomplete="off" />
+              <button class="btn-primary" id="btn-join-p2p">Connect & Receive</button>
+            </div>
+
+            <div class="p2p-status-box" id="p2p-status-box">
+              <div class="p2p-status-icon">🛡️</div>
+              <div class="p2p-status-text">
+                <h4 id="p2p-status-title">1-to-1 Encrypted P2P Tunnel</h4>
+                <p id="p2p-status-desc">Strict 2-peer room lock with anti-brute-force rate limiting. DTLS-SRTP encryption ensures zero server storage and complete privacy.</p>
+              </div>
+            </div>
+
+            <!-- Receiver Live Transfer Telemetry HUD -->
+            <div class="transfer-hud" id="p2p-transfer-hud" style="display: none; margin-top: 16px;">
+              <div class="hud-top">
+                <span class="hud-filename" id="p2p-hud-filename">receiving_file.zip</span>
+                <span class="hud-speed purple-text" id="p2p-hud-speed">P2P Streaming</span>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill purple-fill" id="p2p-hud-progress" style="width: 0%;"></div>
+              </div>
+              <div class="hud-bottom">
+                <span class="hud-bytes" id="p2p-hud-bytes">0 MB / 0 MB</span>
+                <span class="hud-eta" id="p2p-hud-eta">Direct P2P Stream...</span>
+              </div>
+              <p id="p2p-hud-complete-msg" style="display: none; color: #10b981; font-size: 13px; font-weight: 700; margin-top: 10px; text-align: center;">
+                🎉 Stream Complete! Saved directly into your Downloads folder.
+              </p>
+            </div>
+
+            <!-- Receiver Post-Download Actions -->
+            <div class="p2p-receiver-actions" id="p2p-receiver-completed-actions" style="display: none; margin-top: 14px; text-align: center;">
+              <button type="button" class="btn-secondary" id="btn-p2p-leave-room" style="padding: 8px 16px; font-size: 12px; background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: var(--radius-sm); cursor: pointer;">🚪 Leave Room / Connect Another</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode 2 Guide -->
+      <div class="mode-resources-grid">
+        <div class="res-card">
+          <div class="res-icon">🔒</div>
+          <h3>1-to-1 Room Lock & Protection</h3>
+          <p>Each room strictly accommodates 2 peers only. Third parties are locked out automatically, and code attempts are rate-limited against brute-force attacks.</p>
+        </div>
+        <div class="res-card">
+          <div class="res-icon">💾</div>
+          <h3>100% Zero Server Storage</h3>
+          <p>Files are <b>never stored on any cloud disk</b>. Data streams in real-time between device RAM buffers straight into the receiver's download.</p>
+        </div>
+        <div class="res-card">
+          <div class="res-icon">🔐</div>
+          <h3>End-to-End DTLS Encrypted</h3>
+          <p>WebRTC DTLS/SCTP protocols with AES-GCM cipher suites guarantee end-to-end encryption so nobody in between can inspect your private files.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modern SaaS Footer -->
+  <footer class="saas-footer">
+    <div class="saas-footer-container">
+      <div class="footer-warning-box">
+        <span style="font-size: 20px; line-height: 1;">⚠️</span>
+        <div>
+          <strong>Usage Advisory:</strong> AntyShare is engineered strictly for non-sensitive media, videos, photos, and project files. Do not transfer confidential credentials, passwords, financial records, or state-issued IDs. Transfers are peer-to-peer and zero-storage.
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="/" class="footer-brand">
+            <span class="footer-brand-logo">⚡</span>
+            <span class="footer-brand-name">AntyShare</span>
+          </a>
+          <p class="footer-desc">Ultra-fast peer-to-peer & offline hotspot file transfer engine. Zero server storage, direct memory streaming, 1-to-1 room lock, end-to-end encrypted.</p>
+          <div class="footer-trust-chips">
+            <span class="trust-chip"><span>✓</span> 0 MB Server Storage</span>
+            <span class="trust-chip"><span>✓</span> End-to-End Encrypted</span>
+            <span class="trust-chip"><span>✓</span> IP Masked Privacy</span>
+            <span class="trust-chip"><span>✓</span> 1-to-1 Room Lock</span>
+            <span class="trust-chip"><span>✓</span> 100% Ad & Tracker Free</span>
+            <span class="trust-chip"><span>✓</span> No Account Needed</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Transfer Modes</h4>
+          <ul class="footer-links-list">
+            <li><a href="javascript:void(0)" onclick="switchMode('mode-wifi')">Quick Wi-Fi Radar</a></li>
+            <li><a href="javascript:void(0)" onclick="switchMode('mode-offline')">Offline Hotspot (0 MB)</a></li>
+            <li><a href="javascript:void(0)" onclick="switchMode('mode-global')">Global P2P Tunnel</a></li>
+            <li><a href="/antyshare.apk" download="AntyShare.apk">📱 Download Android APK</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Legal & Trust</h4>
+          <ul class="footer-links-list">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+            <li><a href="/disclaimer.html">Disclaimer</a></li>
+            <li><a href="/about.html">About Technology</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Support & Contact</h4>
+          <ul class="footer-links-list">
+            <li><a href="/contact.html">Contact Us</a></li>
+            <li><a href="/contact.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="mailto:support@antyshare.in">support@antyshare.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 AntyShare.in — Zero-Storage Peer-to-Peer Transfer Engine. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/disclaimer.html">Disclaimer</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sender Waiting Modal -->
+  <div class="modal-backdrop" id="modal-sender-waiting" style="display: none;">
+    <div class="modal-box glass-card pulse-border">
+      <div class="modal-icon-header">
+        <div class="radar-pulse-ring"></div>
+        <span class="big-modal-icon">📡</span>
+      </div>
+      <h3 class="modal-title">Sending Transfer Request</h3>
+      <p class="modal-desc">Waiting for <b id="waiting-target-name">Target Device</b> to accept the transfer...</p>
+      
+      <div class="modal-file-preview">
+        <div class="file-preview-icon">📄</div>
+        <div class="file-preview-details">
+          <span class="file-preview-name" id="waiting-file-name">filename.zip</span>
+          <span class="file-preview-size" id="waiting-file-size">0 MB</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-modal-cancel" id="btn-cancel-transfer-req">Cancel Request</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Receiver Incoming Transfer Request Modal -->
+  <div class="modal-backdrop" id="modal-incoming-request" style="display: none;">
+    <div class="modal-box glass-card incoming-card">
+      <div class="modal-badge-security">
+        <span>🛡️ Same Wi-Fi Verification Active</span>
+      </div>
+      <h3 class="modal-title">Incoming File Transfer</h3>
+      <p class="modal-desc">Device <b id="incoming-sender-name">Nearby Phone</b> wants to beam a file to your device:</p>
+
+      <div class="modal-file-preview">
+        <div class="file-preview-icon">📦</div>
+        <div class="file-preview-details">
+          <span class="file-preview-name" id="incoming-file-name">filename.zip</span>
+          <span class="file-preview-size" id="incoming-file-size">0 MB</span>
+        </div>
+      </div>
+
+      <div id="incoming-file-warning" style="display: none; margin: 10px 0; padding: 10px 12px; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; font-size: 11.5px; color: #ef4444; font-weight: 600; text-align: left; line-height: 1.4;">
+        ⚠️ Security Warning: This file is an application/script program. Only accept if you 100% trust this sender.
+      </div>
+
+      <p class="modal-security-note">Only accept if you know the sender on your local Wi-Fi router.</p>
+
+      <div class="modal-actions-dual">
+        <button class="btn-modal-decline" id="btn-decline-transfer">❌ Decline</button>
+        <button class="btn-modal-accept" id="btn-accept-transfer">✅ Accept & Receive</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Camera Scanner Modal -->
+  <div class="modal-backdrop" id="modal-camera-scanner" style="display: none;">
+    <div class="modal-box glass-card scanner-modal-box">
+      <div class="scanner-modal-header">
+        <div class="scanner-header-left">
+          <span class="scanner-icon-badge">📷</span>
+          <h4 class="scanner-modal-title">Scan Peer Device QR Code</h4>
+        </div>
+        <button class="btn-close-scanner" id="btn-close-camera-scanner">✕</button>
+      </div>
+
+      <div class="camera-viewport-wrap">
+        <video id="camera-scanner-video" autoplay playsinline muted></video>
+        <div class="scanning-reticle">
+          <div class="reticle-corner top-left"></div>
+          <div class="reticle-corner top-right"></div>
+          <div class="reticle-corner bottom-left"></div>
+          <div class="reticle-corner bottom-right"></div>
+          <div class="scanning-laser"></div>
+        </div>
+        <canvas id="camera-scanner-canvas" style="display: none;"></canvas>
+      </div>
+
+      <p class="scanner-status" id="scanner-status-text">Align the QR code on the other screen within the frame...</p>
+      
+      <div class="scanner-fallback-controls">
+        <label for="input-qr-camera-snap" class="btn-camera-snap" id="btn-camera-snap-label">📸 Take Photo of QR (Native Camera)</label>
+        <input type="file" id="input-qr-camera-snap" accept="image/*" capture="environment" style="display: none;" />
+        <label for="input-qr-file-fallback" class="btn-file-qr-fallback">📁 Or pick from Gallery</label>
+        <input type="file" id="input-qr-file-fallback" accept="image/*" style="display: none;" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast-notification"></div>
+
+  <!-- Mobile Bottom Floating Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Mobile navigation">
+    <button type="button" class="mobile-nav-item active" data-mode="mode-wifi" id="mob-nav-wifi">
+      <span class="mobile-nav-icon">📡</span>
+      <span>Radar</span>
+    </button>
+    <button type="button" class="mobile-nav-item" data-mode="mode-offline" id="mob-nav-offline">
+      <span class="mobile-nav-icon">📴</span>
+      <span>Offline</span>
+    </button>
+    <button type="button" class="mobile-nav-item" data-mode="mode-global" id="mob-nav-global">
+      <span class="mobile-nav-icon">🌐</span>
+      <span>Global</span>
+    </button>
+    <button type="button" class="mobile-nav-item" id="mob-nav-legal" aria-label="Open Legal and Trust Center">
+      <span class="mobile-nav-icon">🛡️</span>
+      <span>Legal</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Legal & Policies Action Sheet -->
+  <div class="legal-sheet-backdrop" id="modal-legal-sheet" aria-hidden="true">
+    <div class="legal-sheet-container">
+      <div class="legal-sheet-handle"></div>
+      <div class="legal-sheet-header">
+        <div class="legal-sheet-title">
+          <span>🛡️</span>
+          <span>Legal & Policies Center</span>
+        </div>
+        <button class="legal-sheet-close" id="btn-close-legal-sheet" aria-label="Close">✕</button>
+      </div>
+
+      <div class="legal-sheet-advisory">
+        <span style="font-size: 18px; flex-shrink: 0;">⚠️</span>
+        <div><b>Strictly Non-Sensitive Files:</b> AntyShare is peer-to-peer and zero-storage. Never share confidential banking or passwords.</div>
+      </div>
+
+      <div class="legal-sheet-menu">
+        <a href="/privacy.html" class="legal-sheet-item">
+          <span class="legal-sheet-item-icon">🔒</span>
+          <div class="legal-sheet-item-content">
+            <div class="legal-sheet-item-name">Privacy Policy</div>
+            <div class="legal-sheet-item-desc">100% Zero-storage, masked IP, end-to-end encrypted, zero trackers</div>
+          </div>
+          <span class="legal-sheet-item-arrow">→</span>
+        </a>
+
+        <a href="/terms.html" class="legal-sheet-item">
+          <span class="legal-sheet-item-icon">⚖️</span>
+          <div class="legal-sheet-item-content">
+            <div class="legal-sheet-item-name">Terms of Service</div>
+            <div class="legal-sheet-item-desc">Acceptable use, zero liability, P2P transmission terms</div>
+          </div>
+          <span class="legal-sheet-item-arrow">→</span>
+        </a>
+
+        <a href="/disclaimer.html" class="legal-sheet-item">
+          <span class="legal-sheet-item-icon">🛡️</span>
+          <div class="legal-sheet-item-content">
+            <div class="legal-sheet-item-name">Zero-Storage & Safety Disclaimer</div>
+            <div class="legal-sheet-item-desc">Zero file retention principle & non-sensitive media rule</div>
+          </div>
+          <span class="legal-sheet-item-arrow">→</span>
+        </a>
+
+        <a href="/about.html" class="legal-sheet-item">
+          <span class="legal-sheet-item-icon">ℹ️</span>
+          <div class="legal-sheet-item-content">
+            <div class="legal-sheet-item-name">About Technology</div>
+            <div class="legal-sheet-item-desc">How offline Wi-Fi radar & direct live streaming works</div>
+          </div>
+          <span class="legal-sheet-item-arrow">→</span>
+        </a>
+
+        <a href="/contact.html" class="legal-sheet-item">
+          <span class="legal-sheet-item-icon">📬</span>
+          <div class="legal-sheet-item-content">
+            <div class="legal-sheet-item-name">Support & Contact</div>
+            <div class="legal-sheet-item-desc">Reach our technical team at support@antyshare.in</div>
+          </div>
+          <span class="legal-sheet-item-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/qrcode.min.js"></script>
+  <script src="/jsQR.js"></script>
+  <script src="/app.js?v=2.5.0"></script>
+</body>
+</html>

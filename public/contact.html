@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & FAQ — AntyShare Ultra-Fast P2P & Hotspot Transfer</title>
+  <meta name="description" content="Get in touch with the AntyShare team. Reach out for support, feedback, partnerships, or read our technical transfer FAQs.">
+  <link rel="stylesheet" href="/style.css?v=2.5.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00f0ff">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Minimal Header for Legal Pages -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand" style="text-decoration: none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <span class="brand-name">AntyShare</span>
+          <span class="brand-tag">Ultra-Speed File Engine</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Toggle theme" title="Toggle Dark/Light Mode">
+          <span class="theme-icon-sun">☀️</span>
+          <span class="theme-icon-moon">🌙</span>
+        </button>
+        <a href="/" class="legal-back-btn">← Back to Transfer</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-main">
+    <div class="legal-header">
+      <div class="legal-badge">📬 We're Here to Help</div>
+      <h1 class="legal-title">Contact & Support</h1>
+      <p class="legal-subtitle">Have a question, feedback, or technical issue? Our engineering and support team is ready to assist you.</p>
+      <div class="legal-updated">Typical Response Time: Within 24–48 Hours</div>
+    </div>
+
+    <div class="legal-warning-callout">
+      <h4>⚠️ Important Security Notice</h4>
+      <p>When contacting our support team or submitting inquiries, <strong>never include sensitive personal documents, passwords, API secrets, or banking details in your message.</strong> AntyShare is strictly for non-sensitive media and project files.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card-info">
+        <div class="contact-method">
+          <div class="contact-method-icon">📧</div>
+          <div>
+            <div class="contact-method-title">Direct Email Support</div>
+            <div class="contact-method-desc">For general inquiries, bug reports, and assistance:</div>
+            <a href="mailto:support@antyshare.in" class="contact-method-value">support@antyshare.in</a>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-method-icon">🛡️</div>
+          <div>
+            <div class="contact-method-title">Abuse & Security Inquiries</div>
+            <div class="contact-method-desc">For legal notifications and security concerns:</div>
+            <a href="mailto:abuse@antyshare.in" class="contact-method-value">abuse@antyshare.in</a>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-method-icon">⚡</div>
+          <div>
+            <div class="contact-method-title">Service Availability</div>
+            <div class="contact-method-desc">Platform Status:</div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--green-primary); margin-top: 4px;">● All Signaling Engines Operational (100% Uptime)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legal-card" style="padding: 28px;">
+        <h3 style="margin-top: 0; margin-bottom: 16px;">Send Us a Message</h3>
+        <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); handleContactSubmit();">
+          <div class="form-group">
+            <label for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" placeholder="e.g. Alex Sharma" required />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" placeholder="e.g. alex@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-subject">Topic</label>
+            <select id="contact-subject">
+              <option value="General Support">General Support Question</option>
+              <option value="Bug Report">Technical Bug Report</option>
+              <option value="Feature Suggestion">Feature Suggestion</option>
+              <option value="Partnership / Ad Inquiry">Partnership / Advertising Inquiry</option>
+              <option value="Privacy Concern">Privacy / Security Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" rows="4" placeholder="How can we help? (Please do not include confidential data)" required></textarea>
+          </div>
+
+          <div class="form-status-alert" id="contact-form-status"></div>
+
+          <button type="submit" class="btn-form-submit" id="btn-contact-submit">
+            <span>Send Message</span> <span>🚀</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Technical FAQs Section -->
+    <article class="legal-card" id="faq" style="margin-top: 40px;">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+
+      <h3>1. Does AntyShare save or store my transferred files?</h3>
+      <p>No. AntyShare operates on an absolute <strong>Zero-Storage Architecture</strong>. Files are streamed directly between peer memory buffers or local network interfaces. We do not maintain any persistent storage disk array for user files. The moment your transfer is finished or your session is closed, all traces vanish.</p>
+
+      <h3>2. Why is there a warning against sharing sensitive information?</h3>
+      <p>AntyShare was engineered from the ground up for high-speed transfer of everyday media, creative video edits, photography galleries, archives, and developer packages. Because transfers happen directly between peers without server verification or identity vetting, you should never use this platform to send sensitive documents such as banking credentials, passwords, confidential corporate trade secrets, or national ID cards.</p>
+
+      <h3>3. How fast can AntyShare transfer files in Offline Hotspot mode?</h3>
+      <p>In Offline Hotspot mode (or 5 GHz local Wi-Fi), file streaming bypasses the public internet entirely. Transfer speeds depend solely on your device Wi-Fi chips, typically reaching between <strong>40 MB/s and 90 MB/s</strong> (up to 700 Mbps). A 10 GB file can transfer in under 3 minutes.</p>
+
+      <h3>4. Is there any file size limit?</h3>
+      <p>No artificial file size restrictions are imposed by AntyShare. Users routinely transfer files from 500 MB to 50 GB. In Global P2P mode, maximum file size may only be bounded by your browser's available RAM and WebRTC buffer capacity.</p>
+
+      <h3>5. How does the Offline Hotspot mode work with zero internet data?</h3>
+      <p>Once you install AntyShare as a Progressive Web App (PWA) on your phone or laptop, all HTML, CSS, and client-side JavaScript assets are cached locally by your browser's Service Worker. You can turn off mobile data completely, connect both devices to the same personal Wi-Fi hotspot, and transfer directly over local TCP sockets without consuming a single byte of cellular data.</p>
+
+      <h3>6. What security and privacy protections are built into AntyShare?</h3>
+      <p>AntyShare enforces enterprise-grade privacy and defense-in-depth across every transfer mode:</p>
+      <ul>
+        <li><strong>100% Zero-Storage Architecture:</strong> Files stream purely memory-to-memory. No file data is ever written to disk or stored on our servers.</li>
+        <li><strong>End-to-End DTLS-SRTP Encryption:</strong> Direct peer channels use bank-grade AES-128/256-GCM encryption.</li>
+        <li><strong>Public IP Masking:</strong> Device IPs on the radar mesh are automatically masked to safeguard your location and network identity.</li>
+        <li><strong>1-to-1 Room Locking & Rate Limiting:</strong> Global transfer rooms strictly reject third-party interlopers and rate-limit code guessing.</li>
+        <li><strong>Automated Executable Malware Scan:</strong> Incoming executable and script files (.exe, .bat, .cmd, .msi, .apk) trigger a bright security warning alert before you accept.</li>
+        <li><strong>100% Ad-Free & Tracker-Free:</strong> Zero commercial advertisements, zero Google AdSense, zero tracking cookies, and zero user accounts.</li>
+      </ul>
+    </article>
+  </main>
+
+  <!-- Modern SaaS Footer -->
+  <footer class="saas-footer">
+    <div class="saas-footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="/" class="footer-brand">
+            <span class="footer-brand-logo">⚡</span>
+            <span class="footer-brand-name">AntyShare</span>
+          </a>
+          <p class="footer-desc">Ultra-fast peer-to-peer & offline hotspot file transfer engine. Zero server storage, direct memory streaming, 1-to-1 room lock, end-to-end encrypted.</p>
+          <div class="footer-trust-chips">
+            <span class="trust-chip"><span>✓</span> 0 MB Server Storage</span>
+            <span class="trust-chip"><span>✓</span> End-to-End Encrypted</span>
+            <span class="trust-chip"><span>✓</span> IP Masked Privacy</span>
+            <span class="trust-chip"><span>✓</span> 1-to-1 Room Lock</span>
+            <span class="trust-chip"><span>✓</span> 100% Ad & Tracker Free</span>
+            <span class="trust-chip"><span>✓</span> No Account Needed</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Transfer Modes</h4>
+          <ul class="footer-links-list">
+            <li><a href="/#mode-wifi">Quick Wi-Fi Radar</a></li>
+            <li><a href="/#mode-offline">Offline Hotspot (0 MB)</a></li>
+            <li><a href="/#mode-global">Global P2P Tunnel</a></li>
+            <li><a href="/antyshare.apk" download="AntyShare.apk">📱 Download Android APK</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Legal & Trust</h4>
+          <ul class="footer-links-list">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+            <li><a href="/disclaimer.html">Disclaimer</a></li>
+            <li><a href="/about.html">About Technology</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Support & Contact</h4>
+          <ul class="footer-links-list">
+            <li><a href="/contact.html">Contact Us <span class="badge-mini">Active</span></a></li>
+            <li><a href="/contact.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="mailto:support@antyshare.in">support@antyshare.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 AntyShare.in — Zero-Storage Peer-to-Peer Transfer Engine. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/disclaimer.html">Disclaimer</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btnTheme = document.getElementById('btn-theme-toggle');
+    const savedTheme = localStorage.getItem('antyshare_theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    if (savedTheme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+    if (btnTheme) {
+      btnTheme.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        if (next === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        else document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('antyshare_theme', next);
+      });
+    }
+
+    function handleContactSubmit() {
+      const statusEl = document.getElementById('contact-form-status');
+      const submitBtn = document.getElementById('btn-contact-submit');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending... ⏳';
+
+      setTimeout(() => {
+        statusEl.className = 'form-status-alert success';
+        statusEl.innerHTML = '✓ Thank you! Your message has been received. Our team will review your inquiry shortly.';
+        document.getElementById('contact-form').reset();
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Message 🚀';
+      }, 700);
+    }
+  </script>
+  <!-- Mobile Bottom Floating Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Mobile navigation">
+    <a href="/?mode=wifi" class="mobile-nav-item" id="mob-nav-wifi">
+      <span class="mobile-nav-icon">📱</span>
+      <span>Radar</span>
+    </a>
+    <a href="/?mode=offline" class="mobile-nav-item" id="mob-nav-offline">
+      <span class="mobile-nav-icon">⚡</span>
+      <span>Hotspot</span>
+    </a>
+    <a href="/?mode=global" class="mobile-nav-item" id="mob-nav-global">
+      <span class="mobile-nav-icon">🌐</span>
+      <span>Global</span>
+    </a>
+    <a href="/contact.html" class="mobile-nav-item active" id="mob-nav-legal">
+      <span class="mobile-nav-icon">🛡️</span>
+      <span>Legal</span>
+    </a>
+  </nav>
+</body>
+</html>

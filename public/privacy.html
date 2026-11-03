@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — AntyShare Ultra-Fast P2P & Hotspot Transfer</title>
+  <meta name="description" content="AntyShare Privacy Policy: 100% Zero server storage, direct WebRTC peer-to-peer data streams, masked IP privacy, zero third-party trackers, zero ads, and DTLS end-to-end encryption.">
+  <link rel="stylesheet" href="/style.css?v=2.5.0">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00f0ff">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Minimal Header for Legal Pages -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand" style="text-decoration: none;">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <span class="brand-name">AntyShare</span>
+          <span class="brand-tag">Ultra-Speed File Engine</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="Toggle theme" title="Toggle Dark/Light Mode">
+          <span class="theme-icon-sun">☀️</span>
+          <span class="theme-icon-moon">🌙</span>
+        </button>
+        <a href="/" class="legal-back-btn">← Back to Transfer</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-main">
+    <div class="legal-header">
+      <div class="legal-badge">🔒 Legal Transparency</div>
+      <h1 class="legal-title">Privacy Policy</h1>
+      <p class="legal-subtitle">Our core architectural commitment: We do not store, inspect, or retain your files. Your transfers remain direct and private.</p>
+      <div class="legal-updated">Last Updated: October 2026 • Effective Immediately</div>
+    </div>
+
+    <div class="legal-warning-callout">
+      <h4>⚠️ Crucial Advisory: Non-Sensitive Media Only</h4>
+      <p>AntyShare is architected strictly for casual media, photos, audio, videos, documents, and developer packages. <strong>You must never use AntyShare to transfer confidential financial records, credit card numbers, passwords, government-issued IDs, or sensitive personal data.</strong> While transfer streams utilize encryption, peer-to-peer sharing requires mutual trust between communicating endpoints.</p>
+    </div>
+
+    <article class="legal-card">
+      <h2>1. The Strict 100% Zero-Server Storage Principle</h2>
+      <p>AntyShare operates on an absolute <strong>Zero-Storage Architecture</strong>. Unlike traditional cloud drives or file lockers (such as Google Drive, WeTransfer, or Dropbox):</p>
+      <ul>
+        <li><strong>No File Uploads or Server Disks:</strong> Files are never uploaded to, saved on, or cached across our web servers or proxy databases. All historical server-side upload directories and disk-write endpoints have been permanently decommissioned and purged.</li>
+        <li><strong>Direct Memory-to-Memory Streaming:</strong> In <em>Offline Hotspot</em> and <em>Quick Wi-Fi Radar</em> modes, data streams directly over your local network interfaces via high-speed memory buffers directly into the recipient's browser Downloads.</li>
+        <li><strong>DTLS-SRTP Encrypted P2P:</strong> In <em>Global P2P</em> mode, files stream directly between browser endpoints using WebRTC DataChannels secured by DTLS-SRTP encryption. The server merely facilitates initial session negotiation (SDP handshake) and never touches payload bytes.</li>
+      </ul>
+
+      <div class="legal-highlight-box">
+        <strong>Summary:</strong> As soon as the transfer finishes or a browser tab is closed, all transfer states immediately vanish from memory. 0 MB and 0 bytes remain on any remote infrastructure.
+      </div>
+
+      <h2>2. Information We Process & Privacy Protections</h2>
+      <h3>A. Ephemeral Signaling Data (Discarded Instantly)</h3>
+      <p>When connecting peers in Global Room mode or Local Radar mode, our signaling relay briefly passes:</p>
+      <ul>
+        <li>Temporary WebSocket session identifiers.</li>
+        <li>Ephemeral WebRTC ICE candidates and Session Description Protocol (SDP) exchange objects.</li>
+        <li>Randomly generated 6-digit room codes or LAN discovery beacons.</li>
+      </ul>
+      <p>This signaling metadata is held purely in volatile server memory (RAM) for the duration of socket connection and is purged the instant peers disconnect.</p>
+
+      <h3>B. Public IP Masking & Anonymity</h3>
+      <p>To preserve your privacy on shared networks, AntyShare enforces public IP masking. On the Quick Wi-Fi Radar mesh, device IP addresses are masked (e.g. <code>103.112.***.***</code> or labeled <code>Local Wi-Fi Network</code>). Your true public IP address is never revealed to other peers or displayed in the UI.</p>
+
+      <h3>C. 1-to-1 Room Lock & Anti-Brute-Force Rate Limiting</h3>
+      <p>Each Global P2P room is strictly limited to exactly two peers (1 sender and 1 receiver). Any third device attempting to enter an active room is automatically rejected with a <code>ROOM_FULL</code> security block. Furthermore, code submission endpoints enforce strict rate-limiting (max 6 attempts per 30 seconds) to prevent automated brute-force attacks.</p>
+
+      <h2>3. Zero Trackers, Zero Ads & No User Profiling</h2>
+      <p>AntyShare is proud to operate a <strong>100% tracker-free and advertising-free platform</strong>:</p>
+      <ul>
+        <li><strong>No Advertising Networks:</strong> We do not run Google AdSense or any third-party programmatic ad networks. Your screen is never cluttered with intrusive commercial banners or popups.</li>
+        <li><strong>No Tracking Cookies or Pixels:</strong> We do not use marketing trackers, Facebook Pixels, or cross-site tracking beacons.</li>
+        <li><strong>No Personal Profiling:</strong> We do not monetize user behaviors, inspect file filenames, or build behavioral profiles.</li>
+      </ul>
+
+      <h2>4. Local Storage and Client Cache (PWA)</h2>
+      <p>AntyShare uses your browser's <code>localStorage</code> solely to save your local UI preferences:</p>
+      <ul>
+        <li>Selected color theme (Dark / Light mode).</li>
+        <li>Custom device display name (e.g. "Arjun's Phone") for Radar identification.</li>
+        <li>Service Worker assets (HTML/CSS/JS) cached strictly for offline application launch.</li>
+      </ul>
+      <p>No transferred files, tokens, or personal identifiers are stored in localStorage or IndexedDB.</p>
+
+      <h2>5. Enterprise Data Security Measures</h2>
+      <ul>
+        <li><strong>Transport Layer Security:</strong> All signaling traffic, web assets, and API handshakes are encrypted using TLS 1.3 / HTTPS.</li>
+        <li><strong>DTLS & SRTP End-to-End Encryption:</strong> All peer-to-peer WebRTC transfers enforce standard DTLS encryption with AES-128 or AES-256 GCM cipher suites.</li>
+        <li><strong>Automated Executable / Script Warning:</strong> When an incoming transfer contains an executable or script (.exe, .bat, .cmd, .msi, .apk, .vbs), the recipient is presented with a real-time amber security alert badge before acceptance.</li>
+        <li><strong>Camera Hardware Sensor Release:</strong> The QR scanner camera stream is immediately closed and powered off by hardware release the moment a QR code is read or dismissed.</li>
+        <li><strong>No Account Required:</strong> AntyShare requires zero registration, zero email addresses, and zero phone numbers. You remain completely anonymous.</li>
+      </ul>
+
+      <h2>6. GDPR & CCPA Privacy Rights</h2>
+      <p>Under the European General Data Protection Regulation (GDPR) and California Consumer Privacy Act (CCPA), users possess rights to access, rectify, or delete personal data. Because AntyShare retains <strong>zero user accounts, zero profiles, and zero file storage</strong>, we do not hold identifiable personal data to retrieve or erase.</p>
+
+      <h2>7. Children's Privacy</h2>
+      <p>AntyShare does not knowingly collect or solicit any personal information from children under the age of 13. If you believe a child has provided personal information to our site, please contact us immediately.</p>
+
+      <h2>8. Changes to this Privacy Policy</h2>
+      <p>We may periodically update this Privacy Policy to reflect technical improvements or legal requirements. Updated policies will be posted on this page with a revised "Last Updated" timestamp.</p>
+
+      <h2>9. Contact Us</h2>
+      <p>If you have any questions regarding this Privacy Policy or our zero-storage architecture, please contact our data team at:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:support@antyshare.in" style="color: var(--cyan-primary);">support@antyshare.in</a></li>
+        <li><strong>Website:</strong> <a href="https://antyshare.in/contact.html" style="color: var(--cyan-primary);">https://antyshare.in/contact.html</a></li>
+      </ul>
+    </article>
+  </main>
+
+  <!-- Modern SaaS Footer -->
+  <footer class="saas-footer">
+    <div class="saas-footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="/" class="footer-brand">
+            <span class="footer-brand-logo">⚡</span>
+            <span class="footer-brand-name">AntyShare</span>
+          </a>
+          <p class="footer-desc">Ultra-fast peer-to-peer & offline hotspot file transfer engine. Zero server storage, direct memory streaming, 1-to-1 room lock, end-to-end encrypted.</p>
+          <div class="footer-trust-chips">
+            <span class="trust-chip"><span>✓</span> 0 MB Server Storage</span>
+            <span class="trust-chip"><span>✓</span> End-to-End Encrypted</span>
+            <span class="trust-chip"><span>✓</span> IP Masked Privacy</span>
+            <span class="trust-chip"><span>✓</span> 1-to-1 Room Lock</span>
+            <span class="trust-chip"><span>✓</span> 100% Ad & Tracker Free</span>
+            <span class="trust-chip"><span>✓</span> No Account Needed</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Transfer Modes</h4>
+          <ul class="footer-links-list">
+            <li><a href="/#mode-wifi">Quick Wi-Fi Radar</a></li>
+            <li><a href="/#mode-offline">Offline Hotspot (0 MB)</a></li>
+            <li><a href="/#mode-global">Global P2P Tunnel</a></li>
+            <li><a href="/antyshare.apk" download="AntyShare.apk">📱 Download Android APK</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Legal & Trust</h4>
+          <ul class="footer-links-list">
+            <li><a href="/privacy.html">Privacy Policy <span class="badge-mini">Active</span></a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+            <li><a href="/disclaimer.html">Disclaimer</a></li>
+            <li><a href="/about.html">About Technology</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Support & Contact</h4>
+          <ul class="footer-links-list">
+            <li><a href="/contact.html">Contact Us</a></li>
+            <li><a href="/contact.html#faq">Frequently Asked Questions</a></li>
+            <li><a href="mailto:support@antyshare.in">support@antyshare.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 AntyShare.in — Zero-Storage Peer-to-Peer Transfer Engine. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/disclaimer.html">Disclaimer</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme Switcher for Legal Page
+    const btnTheme = document.getElementById('btn-theme-toggle');
+    const savedTheme = localStorage.getItem('antyshare_theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    if (savedTheme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+    if (btnTheme) {
+      btnTheme.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        if (next === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        else document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('antyshare_theme', next);
+      });
+    }
+  </script>
+  <!-- Mobile Bottom Floating Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Mobile navigation">
+    <a href="/?mode=wifi" class="mobile-nav-item" id="mob-nav-wifi">
+      <span class="mobile-nav-icon">📱</span>
+      <span>Radar</span>
+    </a>
+    <a href="/?mode=offline" class="mobile-nav-item" id="mob-nav-offline">
+      <span class="mobile-nav-icon">⚡</span>
+      <span>Hotspot</span>
+    </a>
+    <a href="/?mode=global" class="mobile-nav-item" id="mob-nav-global">
+      <span class="mobile-nav-icon">🌐</span>
+      <span>Global</span>
+    </a>
+    <a href="/privacy.html" class="mobile-nav-item active" id="mob-nav-legal">
+      <span class="mobile-nav-icon">🛡️</span>
+      <span>Legal</span>
+    </a>
+  </nav>
+</body>
+</html>
