@@ -1,0 +1,26 @@
+# Secret Environment Variables (NEVER COMMIT)
+.env
+.env.local
+*.env
+
+# Private deployment scripts & server credentials
+deploy.js
+
+# Dependencies
+node_modules/
+
+# Android build outputs & local config
+.gradle/
+build/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+.idea/
+*.iml
+
+# OS and Log files
+.DS_Store
+Thumbs.db
+*.log
+uploads/

@@ -1,0 +1,24 @@
+{
+  "name": "antyshare",
+  "version": "1.0.0",
+  "description": "AntyShare — Ultra-Fast Heavy File Transfer Platform (Offline Hotspot, Global P2P & Quick Wi-Fi)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "file-transfer",
+    "offline-sharing",
+    "p2p",
+    "hotspot-share",
+    "antyshare"
+  ],
+  "author": "AntyShare Team",
+  "license": "MIT",
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4",
+    "ws": "^8.18.0"
+  }
+}
